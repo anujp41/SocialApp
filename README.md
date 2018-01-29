@@ -17,3 +17,7 @@
 This screen shows:
 
     a. User Picture
+    b. User Info with:
+        i. User Name
+        ii. User Email
+        iii. **__button on th side that gives option to add recipe__**
