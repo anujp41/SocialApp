@@ -20,4 +20,15 @@ This screen shows:
     b. User Info with:
         i. User Name
         ii. User Email
-        iii. **_button on th side that gives option to add recipe_**
+        iii. button on th side that gives option to add recipe
+    c. List of recipes previously created by user in card format
+        i. More option button on the side of the recipe card that shows:
+            Share -> Edit -> Delete
+
+#### Edit
+
+This screen shows:
+
+    Form that is very similar to the image-9.jpg (sent by Rene)
+    If creating then the form will be empty and say Edit Me
+    If editing then the form will be pre-filled with recipe instructions
