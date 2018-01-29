@@ -12,13 +12,10 @@ export default class Welcome extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          This will show list of users!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('RecipeForm')}>
-          <Text style={styles.buttonText}>Go to RecipeForm</Text>
+        <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Welcome')}>
+          <Text style={styles.buttonText}>Go to Welcome Screen</Text>
         </TouchableHighlight>
       </View>
     );
@@ -37,11 +34,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   button: {
     height: 36,
     backgroundColor: '#48BBEC',
@@ -51,7 +43,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 25,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flex: 0.75
   },
   buttonText: {
     fontSize: 18,
