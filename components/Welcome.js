@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+export default class Welcome extends Component {
 
-export default class Welcome extends Component<{}> {
+  constructor() {
+      super();
+      this.onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+      this.props.navigation.navigate('RecipeForm');
+  }
+
   render() {
     console.log('i am rendering this');
     return (
@@ -24,9 +27,9 @@ export default class Welcome extends Component<{}> {
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <TouchableHighlight style={styles.button} onPress={this.onPress}>
+          <Text style={styles.buttonText}>Go to RecipeForm</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -49,4 +52,20 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  button: {
+    height: 36,
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    marginTop: 25,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  }
 });

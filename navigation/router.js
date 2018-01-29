@@ -1,16 +1,16 @@
 import React from 'react';
 import { StackNavigator, Easing } from 'react-navigation';
-import { Login, List } from '../components';
+import { Welcome, RecipeForm } from '../components';
 
 export const AppScreens = StackNavigator({
-    Login: { 
-        screen: Login,
+    Welcome: { 
+        screen: Welcome,
         navigationOptions: {
             header: null
         }
     },
-    List: { 
-        screen: List,
+    RecipeForm: { 
+        screen: RecipeForm,
         navigationOptions: {
             header: null
         }
