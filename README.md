@@ -5,7 +5,7 @@
 
 ### Screens:
 
-| Name     | Character |
+| Screen Name     | Description |
 | ---      | ---       |
-| Backtick | `         |
-| Pipe     | \|        |
+| Screen 1 | Gives two options: (a) Create new recipe; and (b) Edit existing recipe |
+| Modal 1a | If new recipe is clicked, further two options in same modal: (i)         |
