@@ -14,4 +14,4 @@
 
 #### Welcome
 
-⋅⋅1. User Picture
+⋅⋅⋅ User Picture
