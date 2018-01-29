@@ -14,4 +14,5 @@
 
 #### Welcome
 
-...User Picture
+This screen shows:
+    a. User Picture
