@@ -3,9 +3,9 @@
 
 ##### User come across this page after they have clicked on their User Profile in the Settings tabs
 
-<!-- ### Screens:
+### Screens:
 
 | Screen Name     | Description |
 | ---      | ---       |
-| Screen 1 | Gives two options: (a) Create new recipe; and (b) Edit existing recipe |
-| Modal 1a | If new recipe is clicked, further two options in same modal: (i)         | -->
+| Welcome | Shows the user profile page with picture, basic user profile and list of recipes created by user |
+| Edit | Shows the form that allows user to create recipe as well as edit existing recipe |
