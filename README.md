@@ -15,4 +15,5 @@
 #### Welcome
 
 This screen shows:
+
     a. User Picture
