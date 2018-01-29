@@ -20,4 +20,4 @@ This screen shows:
     b. User Info with:
         i. User Name
         ii. User Email
-        iii. **__button on th side that gives option to add recipe__**
+        iii. **_button on th side that gives option to add recipe_**
