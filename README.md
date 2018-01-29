@@ -30,5 +30,5 @@ This screen shows:
 This screen shows:
 
     Form that is very similar to the image-9.jpg (sent by Rene)
-    If creating then the form will be empty and say Edit Me in all the fields
+    If creating then the form will be empty and say "Edit Me" in all the fields
     If editing then the form will be pre-filled with recipe instructions
