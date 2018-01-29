@@ -10,9 +10,9 @@
 | Welcome | Shows the user profile page with picture, basic user profile and list of recipes created by user |
 | Edit | Shows the form that allows user to create recipe as well as edit existing recipe |
 
-### Screen Info
+## Screen Info
 
-#### Welcome
+### Welcome
 
 This screen shows:
 
@@ -25,7 +25,7 @@ This screen shows:
         i. More option button on the side of the recipe card that shows:
             Share -> Edit -> Delete
 
-#### Edit
+### Edit
 
 This screen shows:
 
