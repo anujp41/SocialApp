@@ -9,3 +9,9 @@
 | ---      | ---       |
 | Welcome | Shows the user profile page with picture, basic user profile and list of recipes created by user |
 | Edit | Shows the form that allows user to create recipe as well as edit existing recipe |
+
+### Screen Info
+
+#### Welcome
+
+⋅⋅⋅1. User Picture
