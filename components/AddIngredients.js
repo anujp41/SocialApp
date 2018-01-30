@@ -5,6 +5,7 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
+import { FormLabel, FormInput } from 'react-native-elements';
 
 export default class AddIngredients extends Component {on
   render() {
@@ -14,6 +15,7 @@ export default class AddIngredients extends Component {on
         <Text style={styles.welcome}>
           We will be adding ingredients
         </Text>
+        <FormLabel>Name</FormLabel>
       </View>
     );
   }
