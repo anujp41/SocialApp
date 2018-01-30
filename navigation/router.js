@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-native'
 import { StackNavigator, Easing } from 'react-navigation';
 import { FormButton, AddIngredients, AddSteps } from '../components';
 
@@ -11,14 +12,14 @@ export const AppScreens = StackNavigator({
     },
     AddIngredients: { 
         screen: AddIngredients,
-        // navigationOptions: {
-        //     header: null
-        // }
+        navigationOptions: {
+            headerRight: <Button title="Save" myProps={{save: 'Hello'}}/>
+        }
     },
     AddSteps: { 
         screen: AddSteps,
-        // navigationOptions: {
-        //     header: null
-        // }
+        navigationOptions: {
+            header: null
+        }
     }
 });

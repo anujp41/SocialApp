@@ -6,9 +6,9 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-export default class AddIngredients extends Component {
-
+export default class AddIngredients extends Component {on
   render() {
+    console.log('props', this.props.navigatin)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
