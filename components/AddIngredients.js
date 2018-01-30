@@ -6,16 +6,19 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-export default class Welcome extends Component {
+export default class AddIngredients extends Component {
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          This will show list of users!
+          Welcome to React Native!
         </Text>
-        <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Welcome')}>
-          <Text style={styles.buttonText}>Go to Welcome Screen</Text>
+        <Text style={styles.instructions}>
+          To get started, edit App.js
+        </Text>
+        <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('RecipeForm')}>
+          <Text style={styles.buttonText}>Go to RecipeForm</Text>
         </TouchableHighlight>
       </View>
     );
@@ -34,6 +37,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
   button: {
     height: 36,
     backgroundColor: '#48BBEC',
@@ -42,9 +50,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 10,
     marginTop: 25,
-    alignSelf: 'stretch',
     justifyContent: 'center',
-    flex: 0.75
+    width: '75%'
   },
   buttonText: {
     fontSize: 18,

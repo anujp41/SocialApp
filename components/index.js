@@ -1,13 +1,18 @@
-export { default as Welcome } from './Welcome';
-export { default as RecipeForm } from './RecipeForm';
+export { default as FormButton } from './FormButton';
+export { default as AddIngredients } from './AddIngredients';
+export { default as AddSteps } from './AddSteps';
 
 import React, { Component } from 'react';
 import { AppScreens } from '../navigation/router.js';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 export default class App extends Component {
   render() {
     return (
-        <AppScreens />
+        <Provider store={store}>
+          <AppScreens />
+        </Provider>
     );
   }
 }
