@@ -7,11 +7,12 @@ import {
 } from 'react-native';
 
 export default class AddSteps extends Component {
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          This is RecipeForm!
+          We will be adding steps
         </Text>
       </View>
     );

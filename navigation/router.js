@@ -11,14 +11,14 @@ export const AppScreens = StackNavigator({
     },
     AddIngredients: { 
         screen: AddIngredients,
-        navigationOptions: {
-            header: null
-        }
+        // navigationOptions: {
+        //     header: null
+        // }
     },
     AddSteps: { 
         screen: AddSteps,
-        navigationOptions: {
-            header: null
-        }
+        // navigationOptions: {
+        //     header: null
+        // }
     }
 });

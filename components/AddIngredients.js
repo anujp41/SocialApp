@@ -12,14 +12,8 @@ export default class AddIngredients extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          We will be adding ingredients
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('RecipeForm')}>
-          <Text style={styles.buttonText}>Go to RecipeForm</Text>
-        </TouchableHighlight>
       </View>
     );
   }

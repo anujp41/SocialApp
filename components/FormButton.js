@@ -10,6 +10,17 @@ import {
 const button =  ['Add Ingredients', 'Add Steps']
 
 export default class FormButton extends Component {
+
+    constructor() {
+        super();
+        this.onPress = this.onPress.bind(this);
+    }
+
+    onPress = (text) => {
+        const regex = new RegExp(' ', 'g');
+        text = text.replace(regex, '');
+        this.props.navigation.navigate(text);
+    }
     
     render() {
         return (
@@ -17,8 +28,8 @@ export default class FormButton extends Component {
                 <Text style={styles.welcome}>
                     Welcome to ChefIQ. Please select from options below!
                 </Text>
-                {button.map(text => (
-                    <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('AddIngredients')}>
+                {button.map((text, i) => (
+                    <TouchableHighlight key={i} style={styles.button} onPress={() => this.onPress(text)}>
                         <Text style={styles.buttonText}>{text}</Text>
                     </TouchableHighlight>
                 ))}
