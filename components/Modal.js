@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     alignItems: 'center',
     backgroundColor: 'white',
-    height: '50%`'
+    height: '50%'
   },
   modalContent: {
     backgroundColor: 'white',
