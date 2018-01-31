@@ -95,7 +95,6 @@ export default class AddSteps extends Component {
                   <Icon name='save' onPress={() => this.buttonPress('save', i)} />
                 </View>
               </View>
-              
           ))}
         </View>
         <View>

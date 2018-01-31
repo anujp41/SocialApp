@@ -1,20 +1,21 @@
 import firebase from '../firebase';
 
 //Action Type
-const GET_USERS = 'GET_USERS';
+const ADD_INGREDIENT = 'ADD_INGREDIENT';
 
 //Action Creators
-getUsers = users => {
-    const action = {type: GET_USERS, users};
+addIngredients = ingredient => {
+    const action = {type: ADD_INGREDIENT, ingredient};
     return action;
 }
 
 //THUNKS
-export function getUsersThunk() {
+export function addIngredientsThunk(ingredient) {
     return function(dispatch) {
-        firebase.database().ref().once('value')
-            .then(snapshot => dispatch(getUsers(snapshot.val())))
-            .catch(error => console.log(error))
+        const key = firebase.database().ref('ingredients').push().key;
+        firebase.database().ref('ingredients').child(key).update(ingredient);
+        ingredient.key = key;
+        dispatch(addIngredients(ingredient));
     }
 }
 
@@ -22,8 +23,8 @@ export function getUsersThunk() {
 export default (state = [], action) => {
     switch (action.type) {
 
-        case GET_USERS:
-            return action.users;
+        case ADD_INGREDIENT:
+            return [...state, action.ingredient];
 
         default:
             return state;

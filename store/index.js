@@ -13,3 +13,4 @@ const store = createStore(reducers, middleware);
 export default store;
 
 export * from './users';
+export * from './recipes';

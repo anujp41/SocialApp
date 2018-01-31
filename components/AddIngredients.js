@@ -6,11 +6,14 @@ import {
   TouchableHighlight,
   Dimensions,
   FlatList,
-  TextInput
+  TextInput,
+  Button
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { addIngredientsThunk } from '../store';
 
-export default class AddIngredients extends Component {
+class AddIngredients extends Component {
 
   constructor() {
     super();
@@ -24,6 +27,11 @@ export default class AddIngredients extends Component {
     this.handleAdd = this.handleAdd.bind(this);
     this.buttonPress = this.buttonPress.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.add = this.add.bind(this);
+  }
+
+  add = () => {
+    this.props.addIngredients(this.state.ingredients);
   }
 
   handleAdd = () => {
@@ -59,6 +67,13 @@ export default class AddIngredients extends Component {
     const editing = this.state.editing;
     return (
       <View style={styles.cotainer}>
+        <View style={{justifyContent: 'space-between'}}>
+            <Button
+              title='Save my ingredients'
+              style={styles.button}
+              onPress={this.add}
+              />
+        </View>
           <View style={styles.form}>
             <Icon name='plus-one' color='#CAC3C3' onPress={this.handleAdd}/>
             <TextInput placeholder='Enter your ingredients here!' placeholderTextColor='#645757' style={styles.textInput} value={this.state.currentIngredient} onChangeText={this.onPress} onSubmitEditing={this.handleAdd} />
@@ -124,5 +139,22 @@ const styles = StyleSheet.create({
   ingredientsRow: {
     flexDirection: 'row',
     height: 40,
-  }
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10
+  },
 });
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addIngredients: ingredient => {
+      const action = addIngredientsThunk(ingredient);
+      dispatch(action);
+    }
+  }
+}
+
+const AddIngredientsContainer = connect(null, mapDispatchToProps)(AddIngredients);
+export default AddIngredientsContainer;

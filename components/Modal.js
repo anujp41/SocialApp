@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, Modal, StyleSheet } from 'react-native';
+import { Text, View, Button, Modal, StyleSheet, Input } from 'react-native';
 
 export default class MyComponent extends Component {
 
@@ -18,17 +18,7 @@ export default class MyComponent extends Component {
           <Modal
               visible={modalVisible}
               animationType={'slide'}
-              onRequestClose={() => this.closeModal()}
           >
-            <View style={styles.modalContent}>
-                <Item fixedlabel>
-                    <Input style={styles.input} placeholder="Your next remainder" />
-                    <Button
-                    onPress={() => this.closeModal()}
-                    title="Close modal"
-                    />
-                </Item>
-            </View>
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
                 <Text>This is content inside of modal component</Text>
