@@ -32,6 +32,7 @@ class AddIngredients extends Component {
 
   add = () => {
     this.props.addIngredients(this.state.ingredients);
+    this.props.navigation.navigate('FormButton');
   }
 
   handleAdd = () => {
