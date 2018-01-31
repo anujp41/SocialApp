@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Text, View, Button, Modal, StyleSheet, Input } from 'react-native';
 
-export default class MyComponent extends Component {
+export default class StepsModal extends Component {
 
-//   openModal() {
-//     this.setState({modalVisible:true});
-//   }
-
-  closeModal() {
+  closeModal = () => {
     this.props.toggleModal();
   }
 
+  pressed = () => {
+      console.log('event ', event)
+  }
+
   render() {
-      const modalVisible = this.props.visible
+    const modalVisible = this.props.visible;
     return (
         <View style={styles.container}>
           <Modal
@@ -21,12 +21,29 @@ export default class MyComponent extends Component {
           >
             <View style={styles.modalContainer}>
               <View style={styles.innerContainer}>
-                <Text>This is content inside of modal component</Text>
                 <Button
                     onPress={() => this.closeModal()}
                     title="Close modal"
-                >
-                </Button>
+                />
+                <Text>Please add more details to the step:</Text>
+                <Text>"{this.props.addDetails}"</Text>
+                <View style={{ flexDirection: 'row' }}>
+                    <Button
+                        onPress={() => this.closeModal()}
+                        title="Add Device"
+                        color='#33cc33'
+                    />
+                    <Button
+                        onPress={() => this.closeModal()}
+                        title="Add Action"
+                        color='#ffcc00'
+                    />
+                    <Button
+                        onPress={() => this.closeModal()}
+                        title="Add Value"
+                        color='#ff5050'
+                    />
+                </View>
               </View>
             </View>
           </Modal>
@@ -47,6 +64,8 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     alignItems: 'center',
+    backgroundColor: 'white',
+    height: '50%`'
   },
   modalContent: {
     backgroundColor: 'white',

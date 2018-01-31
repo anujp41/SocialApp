@@ -20,7 +20,8 @@ export default class AddSteps extends Component {
       steps: [],
       editing: null,
       editText: '',
-      showModal: false
+      showModal: false,
+      addDetails: null
     };
     this.onPress = this.onPress.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -30,8 +31,8 @@ export default class AddSteps extends Component {
   }
 
   toggleModal = (i) => {
-    console.log('modal for ', i);
-    this.setState({ showModal: !this.state.showModal})
+    const step = this.state.steps[i];
+    this.setState({ addDetails: step, showModal: !this.state.showModal })
   }
 
   handleAdd = () => {
@@ -59,8 +60,6 @@ export default class AddSteps extends Component {
     } else if (type === 'remove') {
       steps.splice( i, 1 );
       this.setState({ steps });
-    } else if (type === 'addMore') {
-      console.log('i am presed')
     }
   }
 
@@ -98,7 +97,7 @@ export default class AddSteps extends Component {
           ))}
         </View>
         <View>
-          <Modal visible={this.state.showModal} toggleModal={this.toggleModal} />
+          <Modal visible={this.state.showModal} toggleModal={this.toggleModal} addDetails={this.state.addDetails} />
         </View>
       </View>
     );
