@@ -9,30 +9,38 @@ import {
   TextInput
 } from 'react-native';
 import { Icon } from 'react-native-elements';
+import Modal from './Modal';
 
-export default class AddIngredients extends Component {
+export default class AddSteps extends Component {
 
   constructor() {
     super();
     this.state = {
-      currentIngredient: '',
-      ingredients: [],
+      currentStep: '',
+      steps: [],
       editing: null,
-      editText: ''
+      editText: '',
+      showModal: false
     };
     this.onPress = this.onPress.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.buttonPress = this.buttonPress.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+  }
+
+  toggleModal = (i) => {
+    console.log('modal for ', i);
+    this.setState({ showModal: !this.state.showModal})
   }
 
   handleAdd = () => {
-    const currentIngredient = '';
-    this.setState({ ingredients: [ this.state.currentIngredient, ...this.state.ingredients ], currentIngredient });
+    const currentStep = '';
+    this.setState({ steps: [ this.state.currentStep, ...this.state.steps ], currentStep });
   }
 
-  onPress = currentIngredient => {
-    this.setState({ currentIngredient });
+  onPress = currentStep => {
+    this.setState({ currentStep });
   }
 
   onEdit = editText => {
@@ -40,55 +48,58 @@ export default class AddIngredients extends Component {
   }
 
   buttonPress = (type, i) => {
-    const ingredients = this.state.ingredients;
+    const steps = this.state.steps;
     if (type === 'edit') {
-      this.setState({editing: i, editText: ingredients[i]})
+      this.setState({editing: i, editText: steps[i]})
     } else if (type === 'save') {
-      const newIngredient = this.state.editText;
-      const ingredients = this.state.ingredients;
-      ingredients.splice( i, 1, newIngredient );
-      this.setState({ ingredients, editing: null, editText: '' })
+      const newStep = this.state.editText;
+      const steps = this.state.steps;
+      steps.splice( i, 1, newStep );
+      this.setState({ steps, editing: null, editText: '' })
     } else if (type === 'remove') {
-      ingredients.splice( i, 1 );
-      this.setState({ ingredients });
+      steps.splice( i, 1 );
+      this.setState({ steps });
     } else if (type === 'addMore') {
       console.log('i am presed')
     }
   }
 
   render() {
-    const ingredients = this.state.ingredients;
+    const steps = this.state.steps;
     const editing = this.state.editing;
     return (
       <View style={styles.cotainer}>
           <View style={styles.form}>
             <Icon name='plus-one' color='#CAC3C3' onPress={this.handleAdd}/>
-            <TextInput placeholder='Enter your ingredients here!' placeholderTextColor='#645757' style={styles.textInput} value={this.state.currentIngredient} onChangeText={this.onPress} onSubmitEditing={this.handleAdd} />
+            <TextInput placeholder='Enter your steps here!' placeholderTextColor='#645757' style={styles.textInput} value={this.state.currentStep} onChangeText={this.onPress} onSubmitEditing={this.handleAdd} />
         </View>
         <View style={styles.bottomContainer}>
           <Text style={styles.infoText}>The steps for your recipe are:</Text>
-          {ingredients.map((inst, i) => (
+          {steps.map((inst, i) => (
             editing !== i
             ?
-              <View style={styles.ingredientsRow} key={i} >
+              <View style={styles.stepsRow} key={i} >
                 <TextInput style={styles.rowText} value={inst} editable={false} />
                 <View style={{justifyContent: 'flex-end', flexDirection: 'row', left: 15}}>
                   <Icon name='create' onPress={() => this.buttonPress('edit', i)} />
-                  <Icon name='videocam'  /> 
-                  <Icon name='arrow-drop-down' onPress={() => this.buttonPress('addMore', i)} />
+                  <Icon name='videocam' />
+                  <Icon name='arrow-drop-down' onPress={() => this.toggleModal(i)} />
                   <Icon name='drag-handle' onPress={() => this.buttonPress('drag', i)} />
                   <Icon name='remove-circle' onPress={() => this.buttonPress('remove', i)} />
                 </View>
               </View>
             : 
-              <View style={styles.ingredientsRow} key={i} >
-                <TextInput style={styles.rowText} value={this.state.editText} editable={true} onChangeText={this.onEdit} />
+              <View style={styles.stepsRow} key={i} >
+                <TextInput style={styles.rowText} value={this.state.editText} editable={true} onChangeText={this.onEdit} onSubmitEditing={() => this.buttonPress('save', i)} />
                 <View style={{justifyContent: 'flex-end', flexDirection: 'row', left: 15}}>
                   <Icon name='save' onPress={() => this.buttonPress('save', i)} />
                 </View>
               </View>
-            
+              
           ))}
+        </View>
+        <View>
+          <Modal visible={this.state.showModal} toggleModal={this.toggleModal} />
         </View>
       </View>
     );
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     paddingBottom: 15
   },
-  ingredientsRow: {
+  stepsRow: {
     flexDirection: 'row',
     height: 40,
   }
