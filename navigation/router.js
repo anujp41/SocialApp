@@ -4,12 +4,12 @@ import { StackNavigator, Easing } from 'react-navigation';
 import { FormButton, AddIngredients, AddSteps } from '../components';
 
 export const AppScreens = StackNavigator({
-    FormButton: {
-        screen: FormButton,
-        navigationOptions: {
-            header: null
-        }
-    },
+    // FormButton: {
+    //     screen: FormButton,
+    //     navigationOptions: {
+    //         header: null
+    //     }
+    // },
     AddIngredients: { 
         screen: AddIngredients,
         navigationOptions: {

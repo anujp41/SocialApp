@@ -3,19 +3,54 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
-import { FormLabel, FormInput } from 'react-native-elements';
+import { Icon, FormLabel, FormInput } from 'react-native-elements';
 
-export default class AddIngredients extends Component {on
+export default class AddIngredients extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      currentInstruction: '',
+      instructions: []
+    };
+    this.onPress = this.onPress.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  handleAdd = () => {
+    const currentInstruction = ';
+    this.setState({instructions: [...this.state.instructions, this.state.currentInstruction], currentInstruction});
+  }
+
+  onPress = currentInstruction => {
+    this.setState({currentInstruction});
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.currentInstruction.length !== this.state.currentInstruction.length;
+  }
+
   render() {
-    console.log('props', this.props.navigatin)
+    console.log('state is ', this.state)
+    const instructions = this.state.instructions.reverse();
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          We will be adding ingredients
-        </Text>
-        <FormLabel>Name</FormLabel>
+      <View style={styles.cotainer}>
+        <View>
+          <FormLabel>Enter your instructions below!</FormLabel>
+          <View style={styles.form}>
+            <Icon name='plus-one' onPress={this.handleAdd}/>
+            <FormInput value={this.state.currentInstruction} multiline={true} onChangeText={this.onPress} />
+          </View>
+        </View>
+        <View style={styles.bottomContainer}>
+          <Text style={styles.infoText}>These are all the ingridents added so far!</Text>
+          {instructions.map(inst => (
+            <FormInput style={{backgroundColor: '#F5FCFF'}} value={inst} multiline={true} editable={false} />
+          ))}
+        </View>
       </View>
     );
   }
@@ -24,34 +59,20 @@ export default class AddIngredients extends Component {on
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  },
+  form: {
+    flexDirection: 'row',
+    marginTop: 15
+  },
+  bottomContainer: {
+    marginTop: 15,
+    backgroundColor: '#F5FCFF'
+  },
+  infoText: {
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
+    color: 'fuchsia',
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  button: {
-    height: 36,
-    backgroundColor: '#48BBEC',
-    borderColor: '#48BBEC',
-    borderWidth: 1,
-    borderRadius: 8,
-    marginBottom: 10,
-    marginTop: 25,
-    justifyContent: 'center',
-    width: '75%'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: 'white',
-    alignSelf: 'center'
+    fontWeight: 'bold'
   }
 });
