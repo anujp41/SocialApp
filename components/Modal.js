@@ -23,27 +23,27 @@ export default class StepsModal extends Component {
               <View style={styles.innerContainer}>
                 <Button
                     onPress={() => this.closeModal()}
-                    title="Close modal"
+                    title="Close"
                 />
-                <Text>Please add more details to the step:</Text>
-                <Text>"{this.props.addDetails}"</Text>
-                <View style={{ flexDirection: 'row' }}>
-                    <Button
-                        onPress={() => this.closeModal()}
-                        title="Add Device"
-                        color='#33cc33'
-                    />
-                    <Button
-                        onPress={() => this.closeModal()}
-                        title="Add Action"
-                        color='#ffcc00'
-                    />
-                    <Button
-                        onPress={() => this.closeModal()}
-                        title="Add Value"
-                        color='#ff5050'
-                    />
-                </View>
+                  <Text>Please add more details to the step:</Text>
+                  <Text>"{this.props.addDetails}"</Text>
+                  <View style={{ flexDirection: 'row' }}>
+                      <Button
+                          onPress={() => this.closeModal()}
+                          title="Add Device"
+                          color='#33cc33'
+                      />
+                      <Button
+                          onPress={() => this.closeModal()}
+                          title="Add Action"
+                          color='#ffcc00'
+                      />
+                      <Button
+                          onPress={() => this.closeModal()}
+                          title="Add Value"
+                          color='#ff5050'
+                      />
+                  </View>
               </View>
             </View>
           </Modal>

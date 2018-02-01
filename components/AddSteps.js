@@ -6,10 +6,13 @@ import {
   TouchableHighlight,
   Dimensions,
   FlatList,
-  TextInput
+  TextInput,
+  ScrollView,
+  Button
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import Modal from './Modal';
+import Toast, { DURATION } from 'react-native-easy-toast';
 
 export default class AddSteps extends Component {
 
@@ -28,6 +31,7 @@ export default class AddSteps extends Component {
     this.buttonPress = this.buttonPress.bind(this);
     this.onEdit = this.onEdit.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.show = this.show.bind(this);
   }
 
   toggleModal = (i) => {
@@ -63,14 +67,21 @@ export default class AddSteps extends Component {
     }
   }
 
+  show = () => {
+    this.refs.toast.show('I am seen')
+  }
+
   render() {
     const steps = this.state.steps;
     const editing = this.state.editing;
     return (
       <View style={styles.cotainer}>
+        <Button title="press me" onPress={this.show}/>
           <View style={styles.form}>
             <Icon name='plus-one' color='#CAC3C3' onPress={this.handleAdd}/>
-            <TextInput placeholder='Enter your steps here!' placeholderTextColor='#645757' style={styles.textInput} value={this.state.currentStep} onChangeText={this.onPress} onSubmitEditing={this.handleAdd} />
+            <ScrollView scrollEnabled={false}>
+              <TextInput placeholder='Enter your steps here!' placeholderTextColor='#645757' style={styles.textInput} value={this.state.currentStep} onChangeText={this.onPress} onSubmitEditing={this.handleAdd} />
+            </ScrollView>
         </View>
         <View style={styles.bottomContainer}>
           <Text style={styles.infoText}>The steps for your recipe are:</Text>
@@ -99,6 +110,7 @@ export default class AddSteps extends Component {
         <View>
           <Modal visible={this.state.showModal} toggleModal={this.toggleModal} addDetails={this.state.addDetails} />
         </View>
+        <Toast ref="toast"/>
       </View>
     );
   }
